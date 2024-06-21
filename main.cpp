@@ -11,13 +11,8 @@ using namespace std;
 
 void huffmanConsoleProgram();
 int main() {
-    if (runSimpleTests(SELECTED_TESTS)) {
-        return 0;
-    }
   
     huffmanConsoleProgram();
-
-    cout << endl << "main() completed." << endl;
     return 0;
 }
 
