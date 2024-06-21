@@ -40,16 +40,6 @@ string decodeText(EncodingTreeNode* tree, Queue<Bit>& messageBits) {
     return result;
 }
 
-/**
- * Reconstruct an encoding tree from flattened form Queue<Bit> and Queue<char>.
- *
- * You can assume that the queues are well-formed and the shape/leaves sequences
- * form a valid encoding tree.
- *
- * Your implementation may change the treeShape and treeLeaves queues however you like.
- * There are no requirements about their contents after this function returns.
- */
-
 // What this function does is unflatten the tree (aka creating the tree) by going through the queues of
 // the treeShape input and treeLeaves input and iterating through to generate the tree.
 EncodingTreeNode* unflattenTree(Queue<Bit>& treeShape, Queue<char>& treeLeaves){
@@ -75,18 +65,6 @@ EncodingTreeNode* unflattenTree(Queue<Bit>& treeShape, Queue<char>& treeLeaves){
     return root;
 }
 
-/**
- * Decompress the given EncodedData and return the original text.
- *
- * You can assume the data argument is well-formed and was created by a correct
- * implementation of compress.
- *
- * Your implementation may change the EncodedData however you like. There
- * are no requirements about its contents after this function returns.
- *
- * TODO: Add any additional information to this comment that is necessary to describe
- * your implementation.
- */
 // What this function does is decompress with the given data by going through each of the variables
 // in the struct.
 string decompress(EncodedData& data) {
@@ -104,23 +82,6 @@ Map<char, int> freqMapHelper(string text){
         result[ch] += 1;
     }
     return result;
-}
-/**
- * Constructs an optimal Huffman coding tree for the given text, using
- * the Huffman algorithm.
- *
- * Reports an error if the input text does not contain at least
- * two distinct characters.
- *
- * It can be helpful for you to establish/document the expected behavior of
- * choices re: tie-breaking, choice of which subtree on which side.
- * These choices do not affect correctness or optimality of resulting tree
- * but knowing which is used allows you to construct test cases that depend
- * on that behavior. Our provided test cases expect:
- *  -- our pqueue dequeues elems of equal priority in FIFO order
- *  -- when build new interior node, first elem dequeued placed as zero subtree
- *     and second elem dequeued placed as one subtree
- */
 
 // this is the important function in this program. What it does is build a huffman tree with the
 // input of a text and initially sorts through a frequency map to see which characters have the most value
@@ -174,8 +135,8 @@ void mapTree(EncodingTreeNode* tree, Map<char, string>& result, string bits){
  *
  * You can assume tree is a well-formed encoding tree and contains
  * an encoding for every character in the text.
-
  */
+
 // this encodeText function goes takes in a tree and text and generates a queue of binary code that
 // basically translates to the inputted text but in binary form. (could be considered cryptography.
 Queue<Bit> encodeText(EncodingTreeNode* tree, string text) {
@@ -249,7 +210,6 @@ EncodingTreeNode* createExampleTree() {
      *                / \
      *               R   S
      */
-    /* TODO: Implement this utility function needed for testing. */
 
     EncodingTreeNode* letterE = new EncodingTreeNode('E');
     EncodingTreeNode* letterR = new EncodingTreeNode('R');
@@ -262,7 +222,7 @@ EncodingTreeNode* createExampleTree() {
     return root;
 }
 
-// use post-order
+// used post-order
 void deallocateTree(EncodingTreeNode* t) {
     if (t){
         deallocateTree(t->zero);
